@@ -1,18 +1,5 @@
 FROM maven:3.8.5-jdk-11 as build
 
-# Add a new user "john" with user id 8877
-# RUN useradd -u 8877 john
-# Change to non-root privilege
-# USER john
-
-ARG USERNAME=john
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-
-RUN groupmod --gid $USER_GID $USERNAME \
-    && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
-    && chown -R $USER_UID:$USER_GID /home/$USERNAME
-
 WORKDIR /app
 COPY app /app
 RUN mvn clean package
