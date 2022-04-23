@@ -1,2 +1,1 @@
 # vuln-spring-app-demo
-
