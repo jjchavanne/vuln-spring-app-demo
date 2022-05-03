@@ -33,8 +33,8 @@ jobs:
     - name: Build, tag, and push image to Amazon ECR
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: pc-ecr-image-repo
-        IMAGE_TAG: ${{ github.sha }}
+        ECR_REPOSITORY: vuln_app
+        IMAGE_TAG: _app
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
